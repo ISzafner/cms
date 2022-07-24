@@ -28,23 +28,23 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <label for="surname" class="col-md-4 col-form-label text-md-end">Nazwisko</label>
-                                <div class="col-md-6">
-                                    <input id="surname"
-                                           type="text"
-                                           class="form-control @error('name') is-invalid @enderror"
-                                           name="name"
-                                           value="{{ old('surname') }}"
-                                           required autofocus>
+                        <div class="row mb-3">
+                            <label for="surname" class="col-md-4 col-form-label text-md-end">Nazwisko</label>
+                            <div class="col-md-6">
+                                <input id="surname"
+                                       type="text"
+                                       class="form-control @error('surname') is-invalid @enderror"
+                                       name="surname"
+                                       value="{{ old('surname') }}"
+                                       required autofocus>
 
-                                    @error('surname')
-                                    <span class="invalid-feedback" role="alert">
+                                @error('surname')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
-                                </div>
+                                @enderror
                             </div>
+                        </div>
 
                             <div class="row mb-3">
                                 <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>

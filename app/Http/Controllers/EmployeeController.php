@@ -18,18 +18,22 @@ class EmployeeController extends Controller
         return view('employees.create');
     }
 
+    public function show($id)
+    {
+        $employee = Employee::where('id', $id)->first();
+        if($employee){
+            return view('employees.show', ['employee' => $employee]);
+        } else {
+            return 'no records found';
+        }
+    }
+
     public function store()
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'surname' => 'required',
-            'email' => 'required',
-            'another' => '',
-        ]);
 
-        Employee::create($data);
+        $employee = Employee::create(request()->all());
 
-        dd(\request()->all());
+        return redirect('/employee/' . $employee->id);
     }
 
 }

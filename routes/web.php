@@ -24,3 +24,4 @@ Auth::routes();
 Route::get('/', [EmployeeController::class, 'create'])->name('employyes.create');
 Route::post('/employee/added', [EmployeeController::class, 'store']);
 Route::get('/admin', function () {return view('admin.admin');});
+Route::get('/employee/{employee}', [EmployeeController::class, 'show'])->name('employyes.show');
