@@ -9,7 +9,7 @@
                     @method('PATCH')
                 <div class="card">
                     <div class="card-header"><strong>Edycja</strong> danych osobowych pracownika</div>
-
+                    {{--TODO refactor to select--}}
                     <div class="card-body">
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-end">Imię</label>

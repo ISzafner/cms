@@ -18,7 +18,7 @@ class CreatePositionsTable extends Migration
             $table->timestamps();
         });
     }
-
+//TODO change db structure
     /**
      * Reverse the migrations.
      *
