@@ -17,7 +17,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if (is_array($employees) || is_object($employees))
+{{--            TODO    need to fix codes for foreach. throws an error after deletion. the delete method works fine and removes the record from the database--}}
+                    @if (is_array($employees) || is_object($employees))
                     @foreach ($employees as $employee)
                         <tr>
                             <th scope="row">{{ isset($employee->id) ? $employee->id: '-'}}</th>
