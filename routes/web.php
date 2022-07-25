@@ -27,4 +27,5 @@ Route::get('/admin',  [EmployeeController::class, 'showAll'])->name('admin.admin
 Route::get('/employee/{employee}', [EmployeeController::class, 'show'])->name('employees.show');
 Route::get('/employee/{employee}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
 Route::patch('/employee/{employee}', [EmployeeController::class, 'update'])->name('employees.update');
-Route::delete('/employee/delete/{employee}', [EmployeeController::class, 'delete']);
+Route::delete('/employee/{employee}/delete', [EmployeeController::class, 'delete'])->name('employees.delete');
+Route::get('/employee/{employee}/delete', ['as' => 'employee.show', 'uses' => 'EmployeeController@show']);

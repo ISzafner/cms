@@ -64,11 +64,10 @@ class EmployeeController extends Controller
         return redirect('/employee/' . $employee->id);
     }
 
-    public function delete(Employee $employee)
+    public function delete($id)
     {
-        $emp = $employee;
-        $em = Employee::find($emp->id);
-        $em->delete();
+        $employee = Employee::where('id', $id)->firstOrFail();
+        $employee->delete();
         return view('admin.admin');
     }
 }
