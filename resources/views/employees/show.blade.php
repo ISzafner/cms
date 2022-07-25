@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-md-8">
             <table class="table">
                 <h2>Dane osobowe pracownika</h2>
                 <thead class="thead-dark">
@@ -75,8 +76,8 @@
                 </tr>
                 </tbody>
             </table>
-        </div>
-        <a type="button" href="/employee/{{ isset($employee) ? $employee->id : ''}}" class="btn btn-secondary">Edytuj</a>
+        <a type="button" href="/employee/{{ isset($employee) ? $employee->id : ''}}/edit" class="btn btn-secondary">Edytuj</a>
         <a type="button" href="/admin" class="btn btn-dark">Zobacz listę pracowników</a>
+        </div>
     </div>
 @endsection

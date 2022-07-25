@@ -4,10 +4,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form method="post" enctype="multipart/form-data" action="/employee/added">
+                <form method="post" enctype="multipart/form-data" action="/employee/{{$employee->id}}" >
                     @csrf
+                    @method('PATCH')
                 <div class="card">
-                    <div class="card-header">Formularz rejestarcyjny nowego pracownika</div>
+                    <div class="card-header"><strong>Edycja</strong> danych osobowych pracownika</div>
 
                     <div class="card-body">
                             <div class="row mb-3">
@@ -17,7 +18,7 @@
                                            type="text"
                                            class="form-control @error('name') is-invalid @enderror"
                                            name="name"
-                                           value="{{ old('name') }}"
+                                           value="{{ old('name') ?? $employee->name}}"
                                            required autofocus>
 
                                     @error('name')
@@ -35,7 +36,7 @@
                                        type="text"
                                        class="form-control @error('surname') is-invalid @enderror"
                                        name="surname"
-                                       value="{{ old('surname') }}"
+                                       value="{{ old('surname') ?? $employee->surname }}"
                                        required autofocus>
 
                                 @error('surname')
@@ -53,7 +54,7 @@
                                            type="email"
                                            class="form-control @error('email') is-invalid @enderror"
                                            name="email"
-                                           value="{{ old('email') }}"
+                                           value="{{ old('email') ?? $employee->email }}"
                                            autofocus>
 
                                     @error('email')
@@ -71,7 +72,7 @@
                                            type="text"
                                            class="form-control @error('description') is-invalid @enderror"
                                            name="description"
-                                           value="{{ old('description') }}"
+                                           value="{{ old('description') ?? $employee->description}}"
                                            autofocus>
                                             @error('description')
                                             <span class="invalid-feedback" role="alert">
@@ -91,7 +92,7 @@
                                             type="text"
                                             class="form-control @error('testingSystems') is-invalid @enderror"
                                             name="testingSystems"
-                                            value="{{ old('testingSystems') }}"
+                                            value="{{ old('testingSystems') ?? $employee->testingSystems }}"
                                             autofocus>
                                             @error('testingSystems')
                                             <span class="invalid-feedback" role="alert">
@@ -108,7 +109,7 @@
                                             type="text"
                                             class="form-control @error('reportingSystems') is-invalid @enderror"
                                             name="reportingSystems"
-                                            value="{{ old('reportingSystems') }}"
+                                            value="{{ old('reportingSystems') ?? $employee->reportingSystems }}"
                                             autofocus>
                                             @error('reportingSystems')
                                             <span class="invalid-feedback" role="alert">
@@ -125,7 +126,7 @@
                                             type="text"
                                             class="form-control @error('selenium') is-invalid @enderror"
                                             name="selenium"
-                                            value="{{ old('selenium') }}"
+                                            value="{{ old('selenium') ?? $employee->selenium}}"
                                             autofocus>
                                             @error('selenium')
                                             <span class="invalid-feedback" role="alert">
@@ -142,7 +143,7 @@
                                                    type="text"
                                                    class="form-control @error('ide') is-invalid @enderror"
                                                    name="ide"
-                                                   value="{{ old('ide') }}"
+                                                   value="{{ old('ide') ?? $employee->ide}}"
                                                    autofocus>
                                                    @error('ide')
                                                     <span class="invalid-feedback" role="alert">
@@ -159,7 +160,7 @@
                                                type="text"
                                                class="form-control @error('programmingLanguages') is-invalid @enderror"
                                                name="programmingLanguages"
-                                               value="{{ old('programmingLanguages') }}"
+                                               value="{{ old('programmingLanguages') ?? $employee->programmingLanguages}}"
                                                autofocus>
                                                 @error('programmingLanguages')
                                                 <span class="invalid-feedback" role="alert">
@@ -176,7 +177,7 @@
                                                type="text"
                                                class="form-control @error('mysql') is-invalid @enderror"
                                                name="mysql"
-                                               value="{{ old('mysql') }}"
+                                               value="{{ old('mysql') ?? $employee->mysql}}"
                                                autofocus>
                                                 @error('mysql')
                                                 <span class="invalid-feedback" role="alert">
@@ -187,13 +188,13 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="projectManagementMethodologies" class="col-md-4 col-form-label text-md-end">Metodologia zarządzania projaktami</label>
+                                        <label for="projectManagementMethodologies" class="col-md-4 col-form-label text-md-end">Metodologie zarządzania projektami</label>
                                         <div class="col-md-6">
                                             <input id="projectManagementMethodologies"
                                                    type="text"
                                                    class="form-control @error('projectManagementMethodologies') is-invalid @enderror"
                                                    name="projectManagementMethodologies"
-                                                   value="{{ old('projectManagementMethodologies') }}"
+                                                   value="{{ old('projectManagementMethodologies') ?? $employee->projectManagementMethodologies}}"
                                                    autofocus>
                                             @error('projectManagementMethodologies')
                                             <span class="invalid-feedback" role="alert">
@@ -206,7 +207,12 @@
                                     <div class="row mb-3">
                                         <label for="scrum" class="col-md-4 col-form-label text-md-end">Znajomość scrum</label>
                                         <div class="col-md-6">
-                                            <input id="scrum" type="text" class="form-control @error('scrum') is-invalid @enderror" name="scrum" value="{{ old('scrum') }}" autofocus>
+                                            <input id="scrum"
+                                                   type="text"
+                                                   class="form-control @error('scrum') is-invalid @enderror" n
+                                                   ame="scrum"
+                                                   value="{{ old('scrum') ?? $employee->scrum }}"
+                                                   autofocus>
                                             @error('scrum')
                                             <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -217,8 +223,8 @@
 
                                     <div class="row mb-0">
                                         <div class="col-md-6 offset-md-4">
-                                            <button type="submit" class="btn btn-outline-success">
-                                                Zarejestruj nowego pracownika
+                                            <button type="submit" class="btn btn-outline-primary">
+                                                Zachowaj zmiany
                                             </button>
                                         </div>
                                     </div>

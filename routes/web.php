@@ -21,7 +21,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [EmployeeController::class, 'create'])->name('employyes.create');
+Route::get('/', [EmployeeController::class, 'create'])->name('employees.create');
 Route::post('/employee/added', [EmployeeController::class, 'store']);
-Route::get('/admin', function () {return view('admin.admin');});
-Route::get('/employee/{employee}', [EmployeeController::class, 'show'])->name('employyes.show');
+Route::get('/admin',  [EmployeeController::class, 'showAll'])->name('admin.admin');
+Route::get('/employee/{employee}', [EmployeeController::class, 'show'])->name('employees.show');
+Route::get('/employee/{employee}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
+Route::patch('/employee/{employee}', [EmployeeController::class, 'update'])->name('employees.update');
+Route::delete('/employee/delete/{employee}', [EmployeeController::class, 'delete']);
