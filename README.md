@@ -29,7 +29,8 @@
       ``docker exec -it db bash``
    1. Then write password from MYSQL_ROOT_PASSWORD in docker-compose.yml
       ``mysql -u root -p``
-      ``GRANT ALL ON cms.* TO 'user' IDENTIFIED BY 'pass';``
+      ``CREATE USER 'user'@'%' IDENTIFIED BY 'pass';``
+      ``GRANT ALL ON cms.* TO 'user'@'%';``
       ``FLUSH PRIVILEGES;``
    2. And exit terminal
 6. Go back to terminal with app container and write:
